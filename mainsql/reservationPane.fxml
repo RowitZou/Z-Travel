@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0"
+         prefWidth="758.0" rotateGraphic="true" styleClass="root" tabClosingPolicy="UNAVAILABLE"
+         xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainsql.ResController">
+
+    <Tab text="预订">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <ComboBox fx:id="reservationType" layoutX="89.0" layoutY="41.0" onAction="#showReservationScreen"
+                      opacity="0.92" prefHeight="24.0" prefWidth="124.0">
+                <cursor>
+                    <Cursor fx:constant="DEFAULT"/>
+                </cursor>
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="航班"/>
+                        <String fx:value="酒店"/>
+                        <String fx:value="出租车"/>
+                        <String fx:value="预订信息"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="35.0" prefHeight="35.0"
+                   prefWidth="49.0" text="类型" textAlignment="RIGHT" AnchorPane.bottomAnchor="429.0"
+                   AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="669.0" AnchorPane.topAnchor="35.0">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+                <effect>
+                    <Blend/>
+                </effect>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="35.0" prefHeight="35.0"
+                   prefWidth="67.0" text="筛选条件" textAlignment="RIGHT">
+                <effect>
+                    <Blend/>
+                </effect>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            <ComboBox fx:id="reservationScreen" layoutX="317.0" layoutY="41.0" onAction="#setReservationText"
+                      opacity="0.92" prefHeight="24.0" prefWidth="105.0">
+                <cursor>
+                    <Cursor fx:constant="DEFAULT"/>
+                </cursor>
+            </ComboBox>
+            <TextField fx:id="reservationText" editable="false" layoutX="479.0" layoutY="41.0" prefHeight="24.0"
+                       prefWidth="176.0"/>
+            <TableView fx:id="reservationTable" editable="true" layoutX="53.0" layoutY="101.0"
+                       prefHeight="301.0" prefWidth="643.0" AnchorPane.bottomAnchor="97.0"
+                       AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="101.0">
+            </TableView>
+            <Button layoutX="673.0" layoutY="41.0" mnemonicParsing="false"
+                    onAction="#searchReservationInformation" prefHeight="24.0" prefWidth="51.0" text="查询"/>
+            <Button fx:id="reservationButton" disable="true" layoutX="190.0" layoutY="439.0"
+                    mnemonicParsing="false" onAction="#reservation" prefHeight="24.0" prefWidth="80.0"
+                    text="预订"/>
+            <Button fx:id="reservationCancelButton" disable="true" layoutX="455.0" layoutY="438.0"
+                    mnemonicParsing="false" onAction="#cancelReservation" prefHeight="24.0" prefWidth="80.0"
+                    text="取消预订"/>
+        </AnchorPane>
+    </Tab>
+    <Tab text="路线">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Pane fx:id="pathPane" layoutX="80.0" layoutY="82.0" prefHeight="349.0" prefWidth="605.0"/>
+            <Button onAction="#showPath" layoutX="634.0" layoutY="29.0"
+                    mnemonicParsing="false" prefHeight="24.0" prefWidth="83.0" text="刷新显示"/>
+            <TextField fx:id="pathText" layoutX="134.0" layoutY="29.0" prefHeight="24.0" prefWidth="225.0"/>
+            <Label fx:id="pathLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="24.0"
+                   prefHeight="35.0" prefWidth="49.0" text="用户名" textAlignment="RIGHT">
+                <effect>
+                    <Blend/>
+                </effect>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+    </Tab>
+    <Tab fx:id="updateTab" text="更新">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <ComboBox fx:id="updateType" layoutX="89.0" layoutY="41.0" onAction="#showUpdateScreen"
+                      opacity="0.92" prefHeight="24.0" prefWidth="124.0">
+                <cursor>
+                    <Cursor fx:constant="DEFAULT"/>
+                </cursor>
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="航班"/>
+                        <String fx:value="酒店"/>
+                        <String fx:value="出租车"/>
+                        <String fx:value="用户"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="35.0" prefHeight="35.0"
+                   prefWidth="49.0" text="类型" textAlignment="RIGHT" AnchorPane.bottomAnchor="429.0"
+                   AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="669.0" AnchorPane.topAnchor="35.0">
+                <effect>
+                    <Blend/>
+                </effect>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="35.0" prefHeight="35.0"
+                   prefWidth="67.0" text="筛选条件" textAlignment="RIGHT">
+                <effect>
+                    <Blend/>
+                </effect>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            <ComboBox fx:id="updateScreen" layoutX="317.0" layoutY="41.0" onAction="#setUpdateText"
+                      opacity="0.92" prefHeight="24.0" prefWidth="105.0">
+                <cursor>
+                    <Cursor fx:constant="DEFAULT"/>
+                </cursor>
+            </ComboBox>
+            <TextField fx:id="updateText" layoutX="479.0" layoutY="41.0" prefHeight="24.0" prefWidth="176.0"/>
+            <TableView fx:id="updateTable" editable="true" layoutX="53.0" layoutY="101.0" prefHeight="215.0"
+                       prefWidth="643.0" AnchorPane.bottomAnchor="183.0" AnchorPane.leftAnchor="53.0"
+                       AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="101.0">
+            </TableView>
+            <Button layoutX="673.0" layoutY="41.0" mnemonicParsing="false" onAction="#searchUpdateInformation"
+                    prefHeight="24.0" prefWidth="51.0" text="查询"/>
+            <Button fx:id="deleteButton" disable="true" layoutX="335.0" layoutY="330.0" mnemonicParsing="false"
+                    onAction="#deleteItems" prefHeight="24.0" prefWidth="80.0" text="删除"/>
+            <Button fx:id="insertButton" disable="true" layoutX="335.0" layoutY="455.0" mnemonicParsing="false"
+                    onAction="#insertItems" prefHeight="24.0" prefWidth="80.0" text="添加"/>
+            <TextField fx:id="insertText1" layoutX="140.0" layoutY="381.0" prefHeight="24.0" prefWidth="114.0"
+                       visible="false"/>
+            <TextField fx:id="insertText2" layoutX="362.0" layoutY="381.0" prefHeight="24.0" prefWidth="114.0"
+                       visible="false"/>
+            <TextField fx:id="insertText3" layoutX="585.0" layoutY="380.0" prefHeight="24.0" prefWidth="114.0"
+                       visible="false"/>
+            <Label fx:id="insertLabel1" layoutX="62.0" layoutY="381.0" prefHeight="24.0" prefWidth="60.0"
+                   text="Label" visible="false">
+                <effect>
+                    <Blend/>
+                </effect>
+            </Label>
+            <Label fx:id="insertLabel2" layoutX="282.0" layoutY="382.0" prefHeight="24.0" prefWidth="60.0"
+                   text="Label" visible="false">
+                <effect>
+                    <Blend/>
+                </effect>
+            </Label>
+            <Label fx:id="insertLabel3" layoutX="500.0" layoutY="382.0" prefHeight="24.0" prefWidth="60.0"
+                   text="Label" visible="false">
+                <effect>
+                    <Blend/>
+                </effect>
+            </Label>
+            <TextField fx:id="insertText4" layoutX="140.0" layoutY="416.0" prefHeight="24.0" prefWidth="206.0"
+                       visible="false"/>
+            <TextField fx:id="insertText5" layoutX="457.0" layoutY="416.0" prefHeight="24.0" prefWidth="206.0"
+                       visible="false"/>
+            <Label fx:id="insertLabel4" layoutX="61.0" layoutY="418.0" prefHeight="24.0" prefWidth="60.0"
+                   text="Label" visible="false">
+                <effect>
+                    <Blend/>
+                </effect>
+            </Label>
+            <Label fx:id="insertLabel5" layoutX="373.0" layoutY="417.0" prefHeight="24.0" prefWidth="60.0"
+                   text="Label" visible="false">
+                <effect>
+                    <Blend/>
+                </effect>
+            </Label>
+        </AnchorPane>
+    </Tab>
+</TabPane>
